@@ -7,14 +7,18 @@ public class App {
     }
 
     public static void main(String[] args) {
-        Mobile mobile = new Mobile();
-        Andriod andriod = new Andriod();
-        IPhone iPhone = new IPhone();
+        Mobile mobile = new Mobile("boom", "black", "sumsang");
+        Andriod andriod = new Andriod("guochanshouji", "black", "huawei");
+        IPhone iPhone = new IPhone("gaodashang", "white", "apple");
 
         mobile.call("aaa");
-        andriod.call("aaa");
+        andriod.call("aaaaaaaaaaaaafddsfsdfdsfaaaa");
         iPhone.call("aaa");
         mobile.getInfo();
-//        System.out.println(new App().getGreeting());
+        Person li = new Person("li");
+        li.setMobile(andriod);
+        li.useMobile("waht ?");
+
+
     }
 }

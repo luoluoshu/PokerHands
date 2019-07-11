@@ -17,8 +17,10 @@ public class Mobile {
         return brand;
     }
 
-    public Mobile(){
-        ;
+    public Mobile(String name, String color, String brand){
+        this.name = name;
+        this.color = color;
+        this.brand = brand;
     }
 
 //    public void call(){
@@ -31,5 +33,11 @@ public class Mobile {
 
     public void getInfo(){
         System.out.println("name: [" + this.name + "], color: [" + this.color + "], brand: [" + this.brand + "]");
+    }
+
+    public Mobile clone(){
+        Mobile result = new Mobile(this.name, getColor(), getBrand());
+        return result;
+
     }
 }
