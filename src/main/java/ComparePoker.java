@@ -2,10 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComparePoker {
+    private final static int LENGTH = 14;
     private List<Poker> a = new ArrayList<>();
     private List<Poker> b = new ArrayList<>();
-    private int[] listA= new int[13];
-    private int[] listB= new int[13];
+    private int[] listA= new int[LENGTH];
+    private int[] listB= new int[LENGTH];
 
     public ComparePoker(){
 
@@ -24,12 +25,22 @@ public class ComparePoker {
         this.b = b;
         this.listA = initList(a);
         this.listB = initList(b);
+        findPair(this.listA);
+        findPair(this.listB);
         if (getListMax(listA)> getListMax(listB)){
             print(a);
             return a;
         }else {
             print(b);
             return b;
+        }
+    }
+
+    public void findPair(int[] array){
+        for (int i = 0; i <13 ; i++) {
+            if (array[i] == 2){
+                array[13]++;
+            }
         }
     }
 
@@ -43,7 +54,7 @@ public class ComparePoker {
     }
 
     public int[] initList(List<Poker> a){
-        int[] array = new int[13];
+        int[] array = new int[LENGTH];
         for (Poker p: a
              ) {
             array[p.getPokerSize()-2]++;
