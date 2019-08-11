@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComparePoker {
-    private final static int LENGTH = 14;
+    private final static int LENGTH = 15;
     private List<Poker> a = new ArrayList<>();
     private List<Poker> b = new ArrayList<>();
     private int[] listA= new int[LENGTH];
@@ -25,29 +25,45 @@ public class ComparePoker {
         this.b = b;
         this.listA = initList(a);
         this.listB = initList(b);
-        findPair(this.listA);
-        findPair(this.listB);
-        if (getListMax(listA)> getListMax(listB)){
-            print(a);
-            return a;
-        }else {
-            print(b);
-            return b;
-        }
+        findPairAndThree(this.listA);
+        findPairAndThree(this.listB);
+        return compareHand(this.listA,this.listB);
     }
 
-    public void findPair(int[] array){
+    public void findPairAndThree(int[] array){
         for (int i = 0; i <13 ; i++) {
             if (array[i] == 2){
                 array[13]++;
+            }else if (array[i] == 3){
+                array[14]++;
             }
+        }
+    }
+
+    private List<Poker> compareHand(int[] A, int[] B){
+        int aMaxIndex = getListMax(A);
+        int bMaxIndex = getListMax(B);
+        if (getListMax(A)> getListMax(B)){
+            print(a);
+            return this.a;
+        }else if (getListMax(A)< getListMax(B)){
+            print(b);
+            return this.b;
+        }else if (A[getListMax(A)]==B[getListMax(A)]){
+            int[] newA = new int[getListMax(A)+1];
+            int[] newB = new int[getListMax(A)+1];
+            System.arraycopy(A, 0, newA, 0, aMaxIndex);
+            System.arraycopy(B, 0, newB, 0, aMaxIndex);
+            return compareHand(newA, newB);
+        }else {
+            return A[getListMax(A)]>B[getListMax(A)] ? this.a:this.b;
         }
     }
 
     public int getListMax(int[] a){
         for (int i = a.length-1; i >=0 ; i--) {
             if (a[i] > 0){
-                return i+2;
+                return i;
             }
         }
         return 0;

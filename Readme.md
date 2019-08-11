@@ -18,3 +18,5 @@ a TDD project about the poker
 元素的值用于表示有几个对子，有一个对子就自增一次，有两个对子就自增两次。没有对子的时候就是0，
 比较两手牌大小的时候同样从尾部开始遍历找到非零值，当有对子的时候index一定比没有对子的0大。
  given 2C 3H 4C 9H 9D,  4C 5D 8H 9S QC, when call compare, then return 2C 3H 4C 9H 9D.
+5. 三个同上，我们只需要继续将数组再增加一位长度即可，用来寻找有没有3个相同的牌。
+ given 2C 3H 4C 9H 9D,  4C 4D 4H 9S QC, when call compare, then return 4C 4D 4H 9S QC.

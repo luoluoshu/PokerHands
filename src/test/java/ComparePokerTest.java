@@ -53,4 +53,23 @@ public class ComparePokerTest {
         List<Poker> c = comparePoker.compare(a, b);
         Assert.assertEquals(c.get(4).getSize(), "9");
     }
+
+    @Test
+    public void should_return_4C_4D_4H_9S_QC_when_given_4C_4D_4H_9S_QC_and_2C_3H_4C_9H_9D(){
+        List<Poker> a = new ArrayList<>();
+        a.add(new Poker("4", "C"));
+        a.add(new Poker("4", "D"));
+        a.add(new Poker("4", "H"));
+        a.add(new Poker("9", "S"));
+        a.add(new Poker("Q", "C"));
+        List<Poker> b = new ArrayList<>();
+        b.add(new Poker("2", "C"));
+        b.add(new Poker("3", "H"));
+        b.add(new Poker("4", "C"));
+        b.add(new Poker("9", "H"));
+        b.add(new Poker("9", "D"));
+        ComparePoker comparePoker = new ComparePoker();
+        List<Poker> c = comparePoker.compare(a, b);
+        Assert.assertEquals(c.get(4).getSize(), "Q");
+    }
 }
